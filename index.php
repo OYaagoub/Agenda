@@ -6,7 +6,10 @@ require_once 'app/models/User.php';
 require_once 'app/models/UsersDAO.php';
 require_once 'app/models/Photo.php';
 require_once 'app/models/PhotosDAO.php';
-require_once 'app/Controlleres/ControllerUsers.php';
+require_once 'app/models/Note.php';
+require_once 'app/models/NotesDAO.php';
+require_once 'app/controllers/ControllerDashboard.php';
+require_once 'app/Controllers/ControllerUsers.php';
 require_once 'app/helpers/helper.php';
 require_once 'app/models/Sesion.php';
 
@@ -15,42 +18,18 @@ session_start();
 
 //Mapa de enrutamiento
 $mapa = array(
-    'inicio'=>array("Controller"=>'ControllerMensajes',
-                    'metodo'=>'inicio',
+    'inicio'=>array("Controller"=>'ControllerDashboard',
+                    'metodo'=>'index',
                     'privada'=>false),
-    'ver_mensaje'=>array("Controller"=>'ControllerMensajes',
-                         'metodo'=>'ver', 
-                         'privada'=>false),
-    'insertar_mensaje'=>array('Controller'=>'ControllerMensajes',
-                              'metodo'=>'insertar', 
-                              'privada'=>true),
-    'borrar_mensaje'=>array('Controller'=>'ControllerMensajes',
-                            'metodo'=>'borrar', 
-                            'privada'=>true),
-    'editar_mensaje'=>array('Controller'=>'ControllerMensajes',
-                            'metodo'=>'editar', 
-                            'privada'=>true),
-    'login'=>array('Controller'=>'ControllerUsers', 
-                   'metodo'=>'login', 
-                   'privada'=>false),
-    'logout'=>array('Controller'=>'ControllerUsers', 
-                    'metodo'=>'logout', 
+    'data'=>array("Controller"=>'ControllerNotes',
+                    'metodo'=>'data',
                     'privada'=>true),
-    'registrar'=>array('Controller'=>'ControllerUsers', 
-                       'metodo'=>'registrar', 
-                       'privada'=>false),
-    'insertar_favorito'=>array('Controller'=>'ControllerFavoritos', 
-                       'metodo'=>'insertar', 
-                       'privada'=>false),                       
-    'borrar_favorito'=>array('Controller'=>'ControllerFavoritos', 
-                       'metodo'=>'borrar', 
-                       'privada'=>false),
-    'addImageMensaje'=>array('Controller'=>'ControllerMensajes', 
-                       'metodo'=>'addImageMensaje', 
-                       'privada'=>false),
-    'deleteImageMensaje'=>array('Controller'=>'ControllerMensajes', 
-                       'metodo'=>'deleteImageMensaje', 
-                       'privada'=>false),                       
+    'insert'=>array("Controller"=>'ControllerNotes',
+                    'metodo'=>'insert',
+                    'privada'=>true),
+                    
+
+             
 );
 
 

@@ -20,3 +20,17 @@ function imprimirMensaje(){
     } 
 }
 
+
+function cleanString($content){
+   
+        $string = preg_replace("/[^A-Za-z1-9\s_-]/", '', $content);
+        $contentfinal = filter_var($string , FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        return $contentfinal;
+    
+}
+
+
+function cleanId($id){
+    $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);
+    return $id;
+}
