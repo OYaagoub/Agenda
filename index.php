@@ -27,6 +27,21 @@ $mapa = array(
     'insert'=>array("Controller"=>'ControllerNotes',
                     'metodo'=>'insert',
                     'privada'=>true),
+    'update'=>array("Controller"=>'ControllerNotes',
+                    'metodo'=>'update',
+                    'privada'=>true),
+    'delete'=>array("Controller"=>'ControllerNotes',
+                    'metodo'=>'delete',
+                    'privada'=>true),
+    'login'=>array("Controller"=>'ControllerUsers',
+                    'metodo'=>'login',
+                    'privada'=>false),
+    'registrar'=>array("Controller"=>'ControllerUsers',
+                    'metodo'=>'registrar',
+                    'privada'=>false),
+    'logout'=>array("Controller"=>'ControllerUsers',
+                    'metodo'=>'logout',
+                    'privada'=>false),
                     
 
              

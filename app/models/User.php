@@ -4,7 +4,7 @@ class User {
     private $id;
     private $email;
     private $password;
-    private $photo;
+    private $name;
     private $sid;
     
 
@@ -63,19 +63,19 @@ class User {
     }
 
     /**
-     * Get the value of photo
+     * Get the value of name
      */
-    public function getphoto()
+    public function getName()
     {
-        return $this->photo;
+        return $this->name;
     }
 
     /**
-     * Set the value of photo
+     * Set the value of name
      */
-    public function setphoto($photo): self
+    public function setName($name): self
     {
-        $this->photo = $photo;
+        $this->name = $name;
 
         return $this;
     }

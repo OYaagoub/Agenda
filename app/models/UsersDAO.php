@@ -105,14 +105,14 @@ class UsersDAO {
      * @return idUser Devuelve el id autonumérico que se le ha asignado al User o false en caso de error
      */
     function insert(User $User): int|bool{
-        if(!$stmt = $this->conn->prepare("INSERT INTO users (email, password, photo) VALUES (?,?,?)")){
+        if(!$stmt = $this->conn->prepare("INSERT INTO users (email, password, name ,sid) VALUES (?,?,?)")){
             die("Error al preparar la consulta insert: " . $this->conn->error );
         }
         $email = $User->getEmail();
         $password = $User->getPassword();
-        $photo = $User->getphoto();
- 
-        $stmt->bind_param('sss',$email, $password, $photo);
+        $name = $User->getName();
+        $sid = $User->getSid();
+        $stmt->bind_param('ssss',$email, $password, $name,$sid);
         if($stmt->execute()){
             return $stmt->insert_id;
         }

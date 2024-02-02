@@ -4,9 +4,9 @@ class ControllerDashboard
 {
     
     function index() {
-        if (Sesion::existeSesion()) {
+        if (!Sesion::existeSesion()) {
             # code...
-            require_once('app/resources/views/dashboard_gust.php');
+            require_once('app/resources/views/dashboard_auth.php');
 
         }else{
 

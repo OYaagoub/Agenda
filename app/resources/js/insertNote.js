@@ -1,7 +1,7 @@
 
 $(document).ready(function () {
-
-
+    
+    
     $("#btn_insert").click(function () {
         title = document.getElementById("title").value;
         discription = document.getElementById("description").value;
