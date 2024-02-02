@@ -3,7 +3,7 @@
 Class ControllerUsers{
     public function registrar(){
         $error='';
-
+        header('Content-Type: application/json');
         if($_SERVER['REQUEST_METHOD']=='POST'){
 
             //Limpiamos los datos
@@ -21,7 +21,8 @@ Class ControllerUsers{
             //Compruebo que no haya un User registrado con el mismo email
             $UsersDAO = new UsersDAO($conn);
             if($UsersDAO->getByEmail($email) != null){
-            $error = "Ya hay un User con ese email";
+            
+            echo json_encode(['status' => 'false', 'message' => 'Ya hay un User con ese email']);
             }
             else{
 
@@ -41,17 +42,23 @@ Class ControllerUsers{
                     $User->setSid(sha1(rand()+time()), true);
 
                     if($UsersDAO->insert($User)){
-                        header("location: /");
-                        die();
+                        
+                        echo json_encode(['status' => 'true', 'message' => 'User registrado']);
+
+                        
                     }else{
-                        $error = "No se ha podido insertar el User";
+                        
+                        echo json_encode(['status'=>'false','message'=>'No se ha podido insertar el User']);
                     }
                 }
             }
     
-        }   //Acaba if($_SERVER['REQUEST_METHOD']=='POST'){...}
+        }else{
+            
+            echo json_encode(['status' => 'false', 'message' => 'just post method']);
+        }
 
-        require 'app/resources/views/register.php';
+        
 
     }   // Acaba function registrar()
 
@@ -75,19 +82,20 @@ Class ControllerUsers{
                     Sesion::iniciarSesion($User);
             
                     //Creamos la cookie para que nos recuerde 1 semana
-                    setcookie('sid',$User->getSid(),time()+24*60*60,'/');
+                    
                     
                     //Redirigimos a index.php
-                    header('location: index.php');
-                    die();
+                    echo json_encode(['status' => 'true', 'message' => 'login done succesffuly','sid'=>$User->getSid()]);
                 }
             }
             //email o password incorrectos, redirigir a index.php
-            guardarMensaje("Email o password incorrectos");
+            echo json_encode(['status' => 'false', 'message' => 'email or password incorrect']);
+
             header('location: index.php');
         }else{
 
-            require_once 'app/resources/views/login.php';
+            echo json_encode(['status' => 'false', 'message' => 'requierd post method']);
+
         }
     }
 

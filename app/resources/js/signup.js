@@ -13,18 +13,17 @@ $(document).ready(function () {
     //     $("#signupup").attr("data-name", $(this).val());
     // });
 
-    $("#loginsi").click(function () {
-        
+    $("#signupup").click(function () {
         // email = $(this).data("email");
         // password = $(this).data("password");
         // namesu = $(this).data("name");
-        email = $("#emailsi").val();
-        password = $("#passwordsi").val();
-        
+        email = $("#emailsu").val();
+        password = $("#passwordsu").val();
+        namesu = $("#namesu").val();
         data = new FormData();
         data.append("email", email);
         data.append("password", password);
-        
+        data.append("name", namesu);
         const options = {
             method: "POST",
             body: data
@@ -34,15 +33,14 @@ $(document).ready(function () {
         // // Get the domain (hostname) from the URL object
         // var domain = urlObject.hostname;
         // console.log(domain + "/index.php?action=registrar");
-        fetch("/index.php?action=login", options)
+        fetch("/index.php?action=registrar", options)
             .then(respuesta => {
                 return respuesta.json();
             })
             .then(datos => {
-                console.log(datos);
                 if (datos.status == "true") {
-                    setCookie('sid', datos.sid, 24 * 60 * 60, '/');
                     alertName("success",datos.message);
+                    $("#formregister").toggleClass('tog');
                     $("#formlogin").toggleClass("tog");
                 }else{
                     

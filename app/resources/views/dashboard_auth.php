@@ -21,6 +21,8 @@
     <?php
         require_once "app/resources/views/login.php";
         require_once "app/resources/views/register.php";
+        require_once "app/resources/views/alert.php";
+        
     ?>
     
 
@@ -97,8 +99,11 @@
     </div>
     </div>
 </body>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="app/resources/js/open.js"></script>
+<script src="app/resources/js/alert.js"></script>
 <script src="app/resources/js/insertNote.js"></script>
+<script src="app/resources/js/signup.js"></script>
 <script src="app/resources/js/login.js"></script>
 </html>

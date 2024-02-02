@@ -48,9 +48,10 @@ $mapa = array(
 );
 
 
-if(isset($_GET['accion'])){ 
-    if(isset($mapa[$_GET['accion']])){  
-        $accion = $_GET['accion']; 
+if(isset($_GET['action'])){ 
+    if(isset($mapa[$_GET['action']])){  
+        $action = $_GET['action']; 
+        
     }
     else{
         //La acción no existe
@@ -59,7 +60,7 @@ if(isset($_GET['accion'])){
         die();
     }
 }else{
-    $accion='inicio';   
+    $action='inicio';   
 }
 
 
@@ -80,17 +81,17 @@ if( !Sesion::existeSesion() && isset($_COOKIE['sid'])){
 }
 
 //Si la acción es privada compruebo que ha iniciado sesión, sino, lo echamos a index
-// if(!isset($_SESSION['email']) && $mapa[$accion]['privada']){
-if(!Sesion::existeSesion() && $mapa[$accion]['privada']){
+// if(!isset($_SESSION['email']) && $mapa[$action]['privada']){
+if(!Sesion::existeSesion() && $mapa[$action]['privada']){
     header('location: index.php');
-    guardarMensaje("Debes iniciar sesión para acceder a $accion");
+    guardarMensaje("Debes iniciar sesión para acceder a $action");
     die();
 }
 
 
 //$acción ya tiene la acción a ejecutar, cogemos el Controller y metodo a ejecutar del mapa
-$Controller = $mapa[$accion]['Controller'];
-$metodo = $mapa[$accion]['metodo'];
+$Controller = $mapa[$action]['Controller'];
+$metodo = $mapa[$action]['metodo'];
 
 //Ejecutamos el método de la clase Controller
 $objeto = new $Controller();

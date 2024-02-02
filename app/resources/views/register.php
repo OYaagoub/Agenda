@@ -6,7 +6,7 @@
     <div class="content"> 
 
      <h2>SignUp</h2> 
-     <form action="http://localhost:1111/index.php?action=registrar" method="post">
+     
      <div class="form"> 
         <div class="inputBox"> 
 
@@ -37,7 +37,7 @@
 
      </div> 
 
-    </form>
+   
     </div> 
 
    </div> 

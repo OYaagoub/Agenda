@@ -37,7 +37,7 @@ class User {
     /**
      * Set the value of email
      */
-    public function setEmail($email): self
+    public function setEmail($email)
     {
         $this->email = $email;
 
@@ -55,7 +55,7 @@ class User {
     /**
      * Set the value of password
      */
-    public function setPassword($password): self
+    public function setPassword($password)
     {
         $this->password = $password;
 
@@ -73,7 +73,7 @@ class User {
     /**
      * Set the value of name
      */
-    public function setName($name): self
+    public function setName($name)
     {
         $this->name = $name;
 
@@ -91,7 +91,7 @@ class User {
     /**
      * Set the value of sid
      */
-    public function setSid($sid): self
+    public function setSid($sid)
     {
         $this->sid = $sid;
 
