@@ -43,9 +43,12 @@ $(document).ready(function () {
                 if (datos.status == "true") {
                     setCookie('sid', datos.sid, 24 * 60 * 60, '/');
                     alertName("success",datos.message);
+                    $("#auth").show();
+                    $("#guset").hide();
                     $("#formlogin").toggleClass("tog");
                 }else{
-                    
+                    $("#auth").hide();
+                    $("#guset").show();
                     alertName("danger",datos.message);
                 }
             })

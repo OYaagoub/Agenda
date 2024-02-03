@@ -87,11 +87,11 @@ Class ControllerUsers{
                     //Redirigimos a index.php
                     echo json_encode(['status' => 'true', 'message' => 'login done succesffuly','sid'=>$User->getSid()]);
                 }
-            }
-            //email o password incorrectos, redirigir a index.php
-            echo json_encode(['status' => 'false', 'message' => 'email or password incorrect']);
+            }else{
 
-            header('location: index.php');
+                echo json_encode(['status' => 'false', 'message' => 'email or password incorrect']);
+            }
+            
         }else{
 
             echo json_encode(['status' => 'false', 'message' => 'requierd post method']);
@@ -100,9 +100,21 @@ Class ControllerUsers{
     }
 
     public function logout(){
-        Sesion::cerrarSesion();
-        setcookie('sid','',0,'/');
-        header('location: index.php');
+        if(Sesion::existeSesion()){
+
+            Sesion::cerrarSesion();
+            echo json_encode(['status' => 'true', 'message' => 'logout  done succesffuly']);
+        }else{
+            echo json_encode(['status' => 'false', 'message' => 'requierd logined in ']);
+        }
+        
     }
+    public function session(){
+            if(Sesion::existeSesion()){
+                echo json_encode(['status' => 'true', 'message' => 'session done succesffuly','userName'=>Sesion::getUser()->getName()]);
+            }
+            
+        }
+    
 
 }

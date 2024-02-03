@@ -92,6 +92,7 @@ textarea {
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
   backdrop-filter: blur(4px);
+  color: white;
 }
 button {
   border: none;
@@ -372,15 +373,41 @@ input[type="submit"]:active {
 .danger{
   background: rgb(156, 19, 19);
 }
+#guest,#auth{
+  display: flex;
+  flex-direction:row ;
+  margin-top: 20px;
+}
+
+.block{
+  display: flex !important;
+}
+
+.times{
+  padding: 10px;
+  font-size: 20px;
+}
 
 
 
 
+#time option:checked{
+  font-weight: bolder;
+  color:black
+}
+#monthSelector{
+  padding: 10px 20px ;
+  background: transparent;
+  border:none;
+  font-size: 20px;
+}
 
-
-
-
-
+#yearSelector{
+  padding: 10px 20px ;
+  background: transparent;
+  border:none;
+  font-size: 20px;
+}
 
 
 

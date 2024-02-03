@@ -10,12 +10,17 @@
 
 <body>
     <div id="log">
-        <a href="#" id="login">login</a>
-        <a href="#" id="register">register</a>
-        <span style="display:flex;align-items:center;padding:3px;">
-        <img style="width:60px" src="app/resources/icon/user.png" alt="">
-        <p>Oussama</p></span>
-        <a href="#" id="logout">logout</a>
+        <div id="auth" >
+
+            <span style="display:flex;align-items:center;padding:3px;">
+                                <img style="width:60px;" src="app/resources/icon/user.png" alt="">
+                                </span>
+                                <a href="#" style="display:flex" id="logout">logout<p id="username"></p></a>
+        </div>
+        <div id="guset">
+                        <a href="#" id="login">login</a>
+                        <a href="#" id="register">register</a>
+        </div>
 
     </div>
     <?php
@@ -67,12 +72,42 @@
 
 
     <!-- days sourced from: https://nationaldaycalendar.com/february/ -->
-    <h1>February 2022</h1>
-    <p>Holidays and Daily Observances in the United States</a>
+    <h1  style="width:100%;align-self:center;text-align:center;display:flex;justify-content:center">
+    <select  id="monthSelector">
+        <option value=""></option>
+        <option value="1">January</option>
+        <option value="2" selected>February</option>
+        <option value="3">March</option>
+        <option value="4">April</option>
+        <option value="5">May</option>
+        <option value="6">June</option>
+        <option value="7">July</option>
+        <option value="8">August</option>
+        <option value="9">September</option>
+        <option value="10">October</option>
+        <option value="11">November</option>
+        <option value="12">December</option>
+    </select>
+    <select  id="yearSelector">
+        <option value=""></option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024" selected>2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+        <option value="2029">2029</option>
+        <option value="2030">2030</option>
+    </select>
+    </h1>
+    
     
     <ul id="loaddata">
-        <li data-datetime="2022-02-01 21:21"><time >1</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
-        <li data-datetime="2022-02-02 12:21"><time >2</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
+        <li data-datetime="2022-02-01"><time >1</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
+        <li data-datetime="2022-02-02"><time >2</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-03"><time >3</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-04"><time >4</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-05"><time >5</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
@@ -81,14 +116,23 @@
     </ul>
     
     <div id="form">
-        <h3>Agrega un evento</h3>
-        <div style="display:flex">
+        <h3>Agregar  - in la Fecha <span style="color:black" id="agregaEn"></span></h3> 
+        <div style="display:flex;width:80%">
 
-            <input class="input" type="time" name="" id="time" style="padding:10px">
-            <input class="input" type="text" id="title" placeholder="Tiltulo">
+            <input class="input" type="text" style="width:100%" id="title" placeholder="Tiltulo">
+        </div>
+        <div style="display:flex;width:80%">
+        <select  id="time" multiple size="1" style="width:50%">
+            
+            
+            
+            
+            
+            
+        </select>
+            <textarea name="" style="width:50%" id="description" cols="30" rows="10" placeholder="Descripcion"></textarea>
         </div>
         <!-- <input type="text" id="descripcion" placeholder="Descripcion"> -->
-        <textarea name="" style="width:50%" id="description" cols="30" rows="10" placeholder="Descripcion"></textarea>
         <img id="close" src="app/resources/icon/close.png" alt="">
         <div style="width:100%;display:flex;flex-direction:column;align-items:center">
 
@@ -101,9 +145,15 @@
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="app/resources/js/globalVaribale.js"></script>
+<script src="app/resources/js/cookies.js"></script>
+<script src="app/resources/js/auth.js"></script>
 <script src="app/resources/js/open.js"></script>
 <script src="app/resources/js/alert.js"></script>
 <script src="app/resources/js/insertNote.js"></script>
 <script src="app/resources/js/signup.js"></script>
 <script src="app/resources/js/login.js"></script>
+<script src="app/resources/js/logout.js"></script>
+<script src="app/resources/js/listtime.js"></script>
+<script src="app/resources/js/loaddata.js"></script>
 </html>

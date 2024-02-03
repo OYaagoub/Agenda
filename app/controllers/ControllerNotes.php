@@ -7,8 +7,10 @@ class ControllerNotes
         $connexionDB = new ConnexionDB(MYSQL_USER,MYSQL_PASS,MYSQL_HOST,MYSQL_DB);
         $conn = $connexionDB->getConnexion();
         $idIdUser = Sesion::getUser()->getId();
+        // $from = htmlspecialchars($_POST['from']);
+        // $to= htmlspecialchars($_POST['to']);
         $NotesDAO = new NotesDAO($conn);
-        print json_encode(['status'=>'ok','notes'=>$NotesDAO->getById($idIdUser)]);
+        print json_encode(['status'=>'ok','notes'=>$NotesDAO->getAllByMonthYear($idIdUser,"2024-2-1","2024-2-19")]);
         
        
     }

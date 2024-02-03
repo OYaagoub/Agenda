@@ -9,6 +9,7 @@ require_once 'app/models/PhotosDAO.php';
 require_once 'app/models/Note.php';
 require_once 'app/models/NotesDAO.php';
 require_once 'app/controllers/ControllerDashboard.php';
+require_once 'app/Controllers/ControllerNotes.php';
 require_once 'app/Controllers/ControllerUsers.php';
 require_once 'app/helpers/helper.php';
 require_once 'app/models/Sesion.php';
@@ -41,7 +42,10 @@ $mapa = array(
                     'privada'=>false),
     'logout'=>array("Controller"=>'ControllerUsers',
                     'metodo'=>'logout',
-                    'privada'=>false),
+                    'privada'=>true),
+    'session'=>array("Controller"=>'ControllerUsers',
+                    'metodo'=>'session',
+                    'privada'=>true),
                     
 
              

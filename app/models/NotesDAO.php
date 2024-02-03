@@ -40,18 +40,18 @@ class NotesDAO {
     /**
      * Obtiene todos los note de la tabla mensajes
      */
-    public function getAll($idUser):array {
-        if(!$stmt = $this->conn->prepare("SELECT * FROM notes where idUser=?"))
+    public function getAllByMonthYear($idUser,$from,$to):array {
+        if(!$stmt = $this->conn->prepare("SELECT * FROM notes WHERE idUser=? AND datetime BETWEEN ? AND ?"))
         {
             echo "Error en la SQL: " . $this->conn->error;
         }
         //Ejecutamos la SQL
-        $stmt->bind_param('i', $idUser);
+        $stmt->bind_param('iss', $idUser,$from,$to);
         $stmt->execute();
         //Obtener el objeto mysql_result
         $result = $stmt->get_result();
 
-        $array_mensajes = array();
+        $array_note = array();
         
         while($note = $result->fetch_object(Note::class)){
             $array_note[] = $note;
