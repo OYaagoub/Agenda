@@ -7,10 +7,20 @@ class ControllerNotes
         $connexionDB = new ConnexionDB(MYSQL_USER,MYSQL_PASS,MYSQL_HOST,MYSQL_DB);
         $conn = $connexionDB->getConnexion();
         $idIdUser = Sesion::getUser()->getId();
-        // $from = htmlspecialchars($_POST['from']);
-        // $to= htmlspecialchars($_POST['to']);
+        $from = htmlspecialchars($_POST['from']);
+        $to= htmlspecialchars($_POST['to']);
         $NotesDAO = new NotesDAO($conn);
-        print json_encode(['status'=>'ok','notes'=>$NotesDAO->getAllByMonthYear($idIdUser,"2024-2-1","2024-2-19")]);
+        $notes = $NotesDAO->getAllByMonthYear($idIdUser, $from, $to);
+
+
+        // Create the result array
+        $result = ['status' => 'true', 'notes' => $notes];
+
+        // Encode the array into JSON format
+        $jsonResult = json_encode($result);
+
+        // Print the JSON-encoded result
+        echo $jsonResult;
         
        
     }
@@ -20,12 +30,24 @@ class ControllerNotes
         $idIdUser = Sesion::getUser()->getId();
         $NotesDAO = new NotesDAO($conn);
         $note = new Note();
-        $note->setDatetime(cleanString($_POST['datetime']));
+        $note->setDatetime(cleanDateTime($_POST['datetime']));
         $note->setTitle(cleanString($_POST['title']));
         $note->setDescription(cleanString($_POST['description']));
         $note->setIdUser($idIdUser);
-        $NotesDAO->insert($note);
-        print json_encode(['status'=>$NotesDAO->insert($note)]);
+        $id=$NotesDAO->insert($note);
+        
+        if($id===false){
+            echo json_encode(['status'=>'false']);
+            
+        }else{
+            $result=['status'=>'true','id'=>$id,'note'=>$note->toArray()];
+            // Encode the array into JSON format
+            $jsonResult = json_encode($result);
+
+            // Print the JSON-encoded result
+            echo $jsonResult;
+        }
+        
     }
     public function update(){
         $connexionDB = new ConnexionDB(MYSQL_USER,MYSQL_PASS,MYSQL_HOST,MYSQL_DB);
@@ -43,11 +65,16 @@ class ControllerNotes
         $connexionDB = new ConnexionDB(MYSQL_USER,MYSQL_PASS,MYSQL_HOST,MYSQL_DB);
         $conn = $connexionDB->getConnexion();
         $NotesDAO = new NotesDAO($conn);
-
         $id=cleanId($_POST['id']);
+        $note=$NotesDAO->getById($id);
+        if($note==null){
+            print json_encode(['status'=>'false','id'=>$id]);
+        }else{
+            $NotesDAO->delete($note);
+            print json_encode(['status'=>'true','note'=>$note->toArray()]);
+        }
 
         
-        print json_encode(['status'=>$NotesDAO->delete($id)]);
     }
 
 }

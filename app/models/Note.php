@@ -47,7 +47,7 @@ class Note {
     /**
      * Get the value of discription
      */
-    public function getDiscription()
+    public function getDescription()
     {
         return $this->discription;
     }
@@ -55,7 +55,7 @@ class Note {
     /**
      * Set the value of discription
      */
-    public function setDiscription($discription): self
+    public function setDescription($discription): self
     {
         $this->discription = $discription;
 
@@ -96,5 +96,23 @@ class Note {
         $this->datetime = $datetime;
 
         return $this;
+    }
+
+
+
+    /**
+     * Convert the Note object to an associative array
+     *
+     * @return array
+     */
+    public function toArray(): array
+    {
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'description' => $this->discription, // Corrected the spelling mistake in the property name
+            'idUser' => $this->idUser,
+            'datetime' => $this->datetime,
+        ];
     }
 }

@@ -12,10 +12,12 @@
     <div id="log">
         <div id="auth" >
 
-            <span style="display:flex;align-items:center;padding:3px;">
+            <span style="display:flex;align-items:center;padding:3px;flex-direction:column">
                                 <img style="width:60px;" src="app/resources/icon/user.png" alt="">
+                                <p style="font-size:16px" id="username"></p>
                                 </span>
-                                <a href="#" style="display:flex" id="logout">logout<p id="username"></p></a>
+                                <a href="#" style="display:flex;text-align:center;justify-content:center;align-items: center;" id="logout">logout</a>
+                                
         </div>
         <div id="guset">
                         <a href="#" id="login">login</a>
@@ -31,7 +33,7 @@
     ?>
     
 
-    <div id="load">
+    <div id="load" class="load">
         <svg width="300" height="120" id="clackers">
         <!-- Left arc path -->
         <svg>
@@ -74,9 +76,9 @@
     <!-- days sourced from: https://nationaldaycalendar.com/february/ -->
     <h1  style="width:100%;align-self:center;text-align:center;display:flex;justify-content:center">
     <select  id="monthSelector">
-        <option value=""></option>
+        <option value="" selected>select Month</option>
         <option value="1">January</option>
-        <option value="2" selected>February</option>
+        <option value="2" >February</option>
         <option value="3">March</option>
         <option value="4">April</option>
         <option value="5">May</option>
@@ -89,7 +91,7 @@
         <option value="12">December</option>
     </select>
     <select  id="yearSelector">
-        <option value=""></option>
+        <
         <option value="2020">2020</option>
         <option value="2021">2021</option>
         <option value="2022">2022</option>
@@ -106,13 +108,13 @@
     
     
     <ul id="loaddata">
-        <li data-datetime="2022-02-01"><time >1</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
+        <!-- <li data-datetime="2022-02-01"><time >1</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-02"><time >2</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-03"><time >3</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-04"><time >4</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-05"><time >5</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-06"><time >6</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
-        <li data-datetime="2022-02-07"><time >7</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
+        <li data-datetime="2022-02-07"><time >7</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li> -->
     </ul>
     
     <div id="form">
@@ -147,6 +149,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="app/resources/js/globalVaribale.js"></script>
 <script src="app/resources/js/cookies.js"></script>
+<script src="app/resources/js/listtime.js"></script>
 <script src="app/resources/js/auth.js"></script>
 <script src="app/resources/js/open.js"></script>
 <script src="app/resources/js/alert.js"></script>
@@ -154,6 +157,6 @@
 <script src="app/resources/js/signup.js"></script>
 <script src="app/resources/js/login.js"></script>
 <script src="app/resources/js/logout.js"></script>
-<script src="app/resources/js/listtime.js"></script>
+<script src="app/resources/js/delete.js"></script>
 <script src="app/resources/js/loaddata.js"></script>
 </html>

@@ -3,7 +3,7 @@ $(document).ready(function () {
 
 
     $("#logout").click(function () {
-        
+        $("#load").toggleClass("togl");
        
         const options = {
             method: "GET",
@@ -22,17 +22,21 @@ $(document).ready(function () {
                 console.log(datos);
                 if (datos.status == "true") {
                     setCookie('sid', "", 0, '/');
-                    alertName("success",datos.message);
                     $("#formlogin").toggleClass("tog");
                     $("#auth").hide();
                     $("#guset").show();
+                    $("#load").toggleClass("togl");
+                    auth=false;
+                    alertName("success",datos.message);
                 }else{
                     
+                    $("#load").toggleClass("togl");
                     alertName("danger",datos.message);
                 }
             })
             .catch(error => {
                 console.log(error);
+                $("#load").toggleClass("togl");
             })
 
 

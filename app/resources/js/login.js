@@ -14,7 +14,7 @@ $(document).ready(function () {
     // });
 
     $("#loginsi").click(function () {
-        
+        $("#load").toggleClass("togl");
         // email = $(this).data("email");
         // password = $(this).data("password");
         // namesu = $(this).data("name");
@@ -42,18 +42,24 @@ $(document).ready(function () {
                 console.log(datos);
                 if (datos.status == "true") {
                     setCookie('sid', datos.sid, 24 * 60 * 60, '/');
-                    alertName("success",datos.message);
                     $("#auth").show();
                     $("#guset").hide();
                     $("#formlogin").toggleClass("tog");
+                    $("#load").toggleClass("togl");
+                    auth=true;
+                    alertName("success",datos.message);
+                    
                 }else{
                     $("#auth").hide();
                     $("#guset").show();
+                    $("#load").toggleClass("togl");
                     alertName("danger",datos.message);
+
                 }
             })
             .catch(error => {
                 console.log(error);
+                $("#load").toggleClass("togl");
             })
 
 

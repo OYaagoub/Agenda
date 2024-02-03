@@ -28,7 +28,18 @@ function cleanString($content){
         return $contentfinal;
     
 }
+function cleanDateTime($content){
+    $format = "Y-m-d H:i:s"; // Define the expected format
+    $datetime = date_create_from_format($format, $content);
+    
+    if ($datetime !== false) {
+        return $content;
+    } else {
+        return false;
+    }
+    
 
+}
 
 function cleanId($id){
     $id = filter_var($id, FILTER_SANITIZE_NUMBER_INT);

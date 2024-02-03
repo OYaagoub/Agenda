@@ -156,11 +156,13 @@ circle:nth-of-type(4) {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 99;
+  z-index: 199;
   background-color: rgba(0, 0, 0, 0.68);
+  
+}
+.load{
   display: none;
 }
-
 #close,
 #closelog,
 #closelogin {
@@ -354,7 +356,7 @@ input[type="submit"]:active {
 .alert{
   display: none;
   width: 50%;
-  position: absolute;
+  position: fixed;
   bottom: 5%;
   left: 10px;
   z-index: 111;
@@ -414,8 +416,25 @@ input[type="submit"]:active {
 
 
 
+.badge{
+  color: white;
+  font-size: 20px;
+  font-weight: bolder;
+}
 
+.danger-f{
+  background: rgb(156, 19, 19);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
 
-
+.danger-f::before{
+  content: "Double click to delete";
+  color: white;
+ 
+  
+}
 
 

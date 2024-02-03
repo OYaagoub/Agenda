@@ -14,6 +14,7 @@ $(document).ready(function () {
     // });
 
     $("#signupup").click(function () {
+        $("#load").toggleClass("togl");
         // email = $(this).data("email");
         // password = $(this).data("password");
         // namesu = $(this).data("name");
@@ -39,16 +40,19 @@ $(document).ready(function () {
             })
             .then(datos => {
                 if (datos.status == "true") {
-                    alertName("success",datos.message);
                     $("#formregister").toggleClass('tog');
                     $("#formlogin").toggleClass("tog");
+                    $("#load").toggleClass("togl");
+                    alertName("success",datos.message);
                 }else{
                     
+                    $("#load").toggleClass("togl");
                     alertName("danger",datos.message);
                 }
             })
             .catch(error => {
                 console.log(error);
+                $("#load").toggleClass("togl");
             })
 
 

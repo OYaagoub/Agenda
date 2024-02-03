@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    $("#load").toggleClass("togl");
      // Declare the auth variable
 
     const options = {
@@ -30,12 +30,15 @@ $(document).ready(function () {
                     $("#auth").hide();
                     
                 }
+                $("#load").toggleClass("togl");
             } else {
                 auth = false;
+                $("#load").toggleClass("togl");
             }
         })
         .catch(error => {
             $("#auth").hide();
+            $("#load").toggleClass("togl");
         });
 
     // The auth variable can be used here or elsewhere in your code.

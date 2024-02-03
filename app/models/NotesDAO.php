@@ -40,32 +40,47 @@ class NotesDAO {
     /**
      * Obtiene todos los note de la tabla mensajes
      */
-    public function getAllByMonthYear($idUser,$from,$to):array {
-        if(!$stmt = $this->conn->prepare("SELECT * FROM notes WHERE idUser=? AND datetime BETWEEN ? AND ?"))
-        {
-            echo "Error en la SQL: " . $this->conn->error;
-        }
-        //Ejecutamos la SQL
-        $stmt->bind_param('iss', $idUser,$from,$to);
-        $stmt->execute();
-        //Obtener el objeto mysql_result
-        $result = $stmt->get_result();
-
-        $array_note = array();
+    public function getAllByMonthYear($idUser, $from, $to): array {
         
-        while($note = $result->fetch_object(Note::class)){
+    
+        // Prepare SQL query
+        if (!$stmt = $this->conn->prepare("SELECT * FROM notes WHERE idUser=? AND datetime BETWEEN ? AND ?")) {
+            // Handle SQL preparation error
+            throw new Exception("Error in SQL: " . $this->conn->error);
+        }
+    
+        // Bind parameters and execute query
+        $stmt->bind_param('iss', $idUser, $from, $to);
+        if (!$stmt->execute()) {
+            // Handle query execution error
+            throw new Exception("Error executing query: " . $stmt->error);
+        }
+    
+        // Get result set
+        $result = $stmt->get_result();
+    
+        // Fetch objects into an array
+        $array_note = array();
+        while ($note = $result->fetch_object(Note::class)) {
             $array_note[] = $note;
         }
-        return $array_note;
+        $notesArray = [];
+        foreach ($array_note as $note) {
+            $notesArray[] = $note->toArray();
+        }
+        // Close the statement
+        $stmt->close();
+    
+        return $notesArray;
     }
-
+    
 
     /**
      * Inserta en la base de datos el note que recibe como parámetro
      * @return idNote Devuelve el id autonumérico que se le ha asignado al note o false en caso de error
      */
     function insert(Note $note): int|bool{
-        if(!$stmt = $this->conn->prepare("INSERT INTO notes (datetime , title , description , idUser) VALUES (?,?,?,?)")){
+        if(!$stmt = $this->conn->prepare("INSERT INTO notes (datetime , title , discription , idUser) VALUES (?,?,?,?)")){
             die("Error al preparar la consulta insert: " . $this->conn->error );
         }
         $idUser = $note->getIdUser();
@@ -105,7 +120,12 @@ class NotesDAO {
 
     $stmt->bind_param('i', $id);
 
-    return $stmt->execute();
+    if( $stmt->execute()){
+        return true;
+    }
+    else{
+        return false;
+    }
 }
 
     
