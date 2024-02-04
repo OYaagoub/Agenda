@@ -116,12 +116,28 @@
         <li data-datetime="2022-02-06"><time >6</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li>
         <li data-datetime="2022-02-07"><time >7</time><img class="img" src="app/resources/icon/plus.gif" alt="">Dark Chocolate Day </li> -->
     </ul>
-    
+    <div id="table" class="none" style="display:flex;flex-direction:column;align-items:center;justify-content:center">
+
+        <table>
+        <caption style="font-size:20px;font-weight:bolder">Monthly savings</caption>
+            <thead>
+                <tr>
+                <th>Hour</th>
+                <th>title</th>
+                <th>description</th>
+                <th>function</th>
+                </tr>
+            </thead>
+            <tbody id="tramos">
+                
+            </tbody>
+        </table>
+    </div>
     <div id="form">
-        <h3>Agregar  - in la Fecha <span style="color:black" id="agregaEn"></span></h3> 
+        <h3>Agregar  - in la Fecha <span style="color:green" id="agregaEn"></span></h3> 
         <div style="display:flex;width:80%">
 
-            <input class="input" type="text" style="width:100%" id="title" placeholder="Tiltulo">
+            <input class="input" type="text" style="width:100%" id="title" placeholder="Title">
         </div>
         <div style="display:flex;width:80%">
         <select  id="time" multiple size="1" style="width:50%">
@@ -132,7 +148,7 @@
             
             
         </select>
-            <textarea name="" style="width:50%" id="description" cols="30" rows="10" placeholder="Descripcion"></textarea>
+            <textarea name="" style="width:50%" id="description" cols="30" rows="10" placeholder="Descripcion (optional)"></textarea>
         </div>
         <!-- <input type="text" id="descripcion" placeholder="Descripcion"> -->
         <img id="close" src="app/resources/icon/close.png" alt="">
@@ -159,4 +175,5 @@
 <script src="app/resources/js/logout.js"></script>
 <script src="app/resources/js/delete.js"></script>
 <script src="app/resources/js/loaddata.js"></script>
+<script src="app/resources/js/views.js"></script>
 </html>

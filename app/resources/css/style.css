@@ -15,7 +15,7 @@ h1 {
 
 ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
   flex-wrap: wrap;
   list-style: none;
 }
@@ -23,8 +23,8 @@ ul li {
   cursor: pointer;
   position: relative;
   display: flex;
-  width: 10rem;
-  height: 10rem;
+  width: 9rem;
+  height: 9rem;
   margin: 0.25rem;
   flex-flow: column;
   border-radius: 0.2rem;
@@ -437,4 +437,28 @@ input[type="submit"]:active {
   
 }
 
+table{
+  width: 80%;
+  align-self: center;
+}
+table , th , td{
+  border: 1px solid black;
+  border-collapse: collapse;
+  padding: 10px;
+}
+.none{
+  display: none !important;
+}
 
+
+.delete,
+.update{
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+  margin: 5px;
+}
+.delete:hover,
+.update:hover{
+  transform: rotateX(180deg) rotateY(180deg);
+}

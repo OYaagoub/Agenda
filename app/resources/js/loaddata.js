@@ -9,6 +9,7 @@ $(document).ready(function () {
 
         loadDaysOfMonth();
     });
+    
 });
 
 
@@ -16,9 +17,23 @@ $(document).ready(function () {
 
 
 function loadDaysOfMonth() {
-
     var year = $('#yearSelector').val();
+    var currentDate = new Date();
     var monthIndex = $('#monthSelector').val();
+    if(year.trim()==""){
+
+        year = currentDate.getFullYear();
+    }
+    if(monthIndex.trim()==""){
+        var selectElement = document.getElementById('monthSelector');
+        monthIndex = currentDate.getMonth() + 1;
+        selectElement.selectedIndex = monthIndex;
+    }
+    // Get the current date
+
+    // Get the current year
+
+    // Get the current month (returns a number from 0 to 11)
     dias = getData(year, monthIndex);
     if (auth) {
         $("#load").toggleClass("togl");
@@ -97,6 +112,7 @@ function loadDaysOfMonth() {
 
     } else {
         alertName("danger","Request denied please allow the request By Login in");
+        document.getElementById('loaddata').innerHTML = "";
     }
 }
 

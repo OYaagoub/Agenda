@@ -86,6 +86,8 @@ Class ControllerUsers{
                     
                     //Redirigimos a index.php
                     echo json_encode(['status' => 'true', 'message' => 'login done succesffuly','sid'=>$User->getSid()]);
+                }else{
+                    echo json_encode(['status' => 'false', 'message' => 'email or password incorrect']);
                 }
             }else{
 

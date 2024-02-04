@@ -28,6 +28,7 @@ $(document).ready(function () {
                     $("#load").toggleClass("togl");
                     auth=false;
                     alertName("success",datos.message);
+                    loadDaysOfMonth();
                 }else{
                     
                     $("#load").toggleClass("togl");
