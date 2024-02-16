@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $('#loaddata').on('mouseenter', 'li', function () {
+        if($(this).children("img")[0]!=null){
         var xthis = $(this);
         imgs = ["app/resources/icon/3.png", "app/resources/icon/2.png", "app/resources/icon/1.png"]
         xthis.children("img")[1].classList.add( "img2");
@@ -49,15 +50,16 @@ $(document).ready(function () {
 
 
 
-
+    }
     });
     $('#loaddata').on('mouseleave', 'li', function () {
+        if($(this).children("img")[0]!=null){
         clearTimeout(x);
         clearTimeout(y);
         var xthis = $(this);
         xthis.children("img")[1].classList.remove("img2");
         xthis.children("img")[0].src = "app/resources/icon/plus.gif";
-
+        }
 
 
 

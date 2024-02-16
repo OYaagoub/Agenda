@@ -3,23 +3,26 @@ $(document).ready(function () {
     
     
     $('#loaddata').on('click', 'li', function() {
-        $("#form").toggleClass("tog");
-        var date = $(this).data("datetime");
-        $("#btn_insert").attr("data-datetime", date);
-        $("#agregaEn").html(date);
-    
-        timesStock = [];
-    
-        // Use .each() to iterate over jQuery object
-        $(this).children("p").each(function() {
-            var setimes = {
-                "time": $(this).data("time"),
-                "id": $(this).data("id")
-            };
-            timesStock.push(setimes);
-        });
-    
-        listDayTime(timesStock);
+        if($(this).children("img")[0]!=null){
+
+            $("#form").toggleClass("tog");
+            var date = $(this).data("datetime");
+            $("#btn_insert").attr("data-datetime", date);
+            $("#agregaEn").html(date);
+        
+            timesStock = [];
+        
+            // Use .each() to iterate over jQuery object
+            $(this).children("p").each(function() {
+                var setimes = {
+                    "time": $(this).data("time"),
+                    "id": $(this).data("id")
+                };
+                timesStock.push(setimes);
+            });
+        
+            listDayTime(timesStock);
+        }
     });
     
     $("#close").click(function () {
