@@ -15,7 +15,7 @@ h1 {
 
 ul {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr  ;
   flex-wrap: wrap;
   list-style: none;
 }
@@ -23,8 +23,8 @@ ul li {
   cursor: pointer;
   position: relative;
   display: flex;
-  width: 9rem;
-  height: 9rem;
+  width: 13rem;
+  height: 13rem;
   margin: 0.25rem;
   flex-flow: column;
   border-radius: 0.2rem;
@@ -461,4 +461,17 @@ table , th , td{
 .delete:hover,
 .update:hover{
   transform: rotateX(180deg) rotateY(180deg);
+}
+
+.img1{
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  top: 0;
+  right: 0;
+}
+
+.img2{
+  display: block;
 }

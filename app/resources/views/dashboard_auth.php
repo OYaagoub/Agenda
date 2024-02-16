@@ -123,7 +123,6 @@
             <thead>
                 <tr>
                 <th>Hour</th>
-                <th>title</th>
                 <th>description</th>
                 <th>function</th>
                 </tr>
@@ -135,10 +134,7 @@
     </div>
     <div id="form">
         <h3>Agregar  - in la Fecha <span style="color:green" id="agregaEn"></span></h3> 
-        <div style="display:flex;width:80%">
-
-            <input class="input" type="text" style="width:100%" id="title" placeholder="Title">
-        </div>
+        
         <div style="display:flex;width:80%">
         <select  id="time" multiple size="1" style="width:50%">
             

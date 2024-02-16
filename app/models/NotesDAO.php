@@ -80,15 +80,14 @@ class NotesDAO {
      * @return idNote Devuelve el id autonumérico que se le ha asignado al note o false en caso de error
      */
     function insert(Note $note): int|bool{
-        if(!$stmt = $this->conn->prepare("INSERT INTO notes (datetime , title , discription , idUser) VALUES (?,?,?,?)")){
+        if(!$stmt = $this->conn->prepare("INSERT INTO notes (datetime, discription , idUser) VALUES (?,?,?)")){
             die("Error al preparar la consulta insert: " . $this->conn->error );
         }
         $idUser = $note->getIdUser();
         $datetime = $note->getDatetime();
-        $title = $note->getTitle();
         $description = $note->getDescription();
  
-        $stmt->bind_param('sssi',$datetime, $title, $description, $idUser);
+        $stmt->bind_param('ssi',$datetime,  $description, $idUser);
         if($stmt->execute()){
             return $stmt->insert_id;
         }

@@ -28,10 +28,10 @@ class ControllerNotes
         $connexionDB = new ConnexionDB(MYSQL_USER,MYSQL_PASS,MYSQL_HOST,MYSQL_DB);
         $conn = $connexionDB->getConnexion();
         $idIdUser = Sesion::getUser()->getId();
+        
         $NotesDAO = new NotesDAO($conn);
         $note = new Note();
         $note->setDatetime(cleanDateTime($_POST['datetime']));
-        $note->setTitle(cleanString($_POST['title']));
         $note->setDescription(cleanString($_POST['description']));
         $note->setIdUser($idIdUser);
         $id=$NotesDAO->insert($note);

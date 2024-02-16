@@ -13,7 +13,6 @@ create table users(
 DROP TABLE if EXISTS notes;
 create table notes(
     id int not null auto_increment primary key ,
-    title varchar(255) not null ,
     discription text null,
     datetime datetime null,
     idUser int not null,

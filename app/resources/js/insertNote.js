@@ -14,18 +14,18 @@ $(document).ready(function () {
 
     });
     function insert() {
-        title = document.getElementById("title").value;
+        
         discription = document.getElementById("description").value;
         time = document.getElementById("time").value;
         date = document.getElementById("btn_insert").dataset.datetime
         
-        if (title.trim() != '' && time.trim() != '' ){
+        if (time.trim() != '' ){
             $("#load").toggleClass("togl");
 
             datetime = date + " " + document.getElementById("time").value + ":00";
             console.log(datetime);
             data = new FormData();
-            data.append("title", title);
+            
             data.append("description", discription);
             data.append("datetime", datetime);
             const options = {
@@ -39,13 +39,14 @@ $(document).ready(function () {
                     return respuesta.json();
                 })
                 .then(datos => {
+                    console.log(datos);
                     if (datos.status == "true") {
                         $("#form").toggleClass("tog");
-                        console.log(datos);
+                        
                         p = document.createElement("p");
                         p.setAttribute('data-id', datos.id);
                         p.setAttribute('data-time', time);
-                        p.setAttribute('data-title', datos.note.title);
+                        
                         p.setAttribute('data-description', datos.note.description);
                         parent = document.querySelector(`li[data-datetime="${date}"]`);
                         parent.appendChild(p);

@@ -11,7 +11,10 @@ $(document).ready(function () {
     })
     $('#tramos').on('click', '.delete', function () {
         // var timeElement = document.getElementById('time');
-        deleteNote($(this))
+        var result = confirm("Are you sure you want to delete is?");
+        if(result){
+            deleteNote($(this))
+        }
         // Adding a double-click event listener to elements with class 'danger-f'
         // timeElement.addEventListener('dblclick', function (event) {
         //     if (event.target.classList.contains('danger-f')) {

@@ -2,7 +2,7 @@
 
 class Note {
     private $id;
-    private $title;
+ 
     private $discription;
     private $datetime;
     private $idUser;
@@ -29,20 +29,7 @@ class Note {
     /**
      * Get the value of title
      */
-    public function getTitle()
-    {
-        return $this->title;
-    }
-
-    /**
-     * Set the value of title
-     */
-    public function setTitle($title): self
-    {
-        $this->title = $title;
-
-        return $this;
-    }
+   
 
     /**
      * Get the value of discription
@@ -109,7 +96,6 @@ class Note {
     {
         return [
             'id' => $this->id,
-            'title' => $this->title,
             'description' => $this->discription, // Corrected the spelling mistake in the property name
             'idUser' => $this->idUser,
             'datetime' => $this->datetime,
